@@ -215,9 +215,9 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'orbis',
-      'username' => 'root',
-      'password' => 'drakomares',
+      'database' => 'project_orbis',
+      'username' => 'drupal',
+      'password' => '123',
       'host' => 'localhost',
       'port' => '',
       'driver' => 'mysql',
