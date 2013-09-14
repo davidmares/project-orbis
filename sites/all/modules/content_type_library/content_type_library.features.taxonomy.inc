@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * content_type_libro.features.taxonomy.inc
+ * content_type_library.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function content_type_libro_taxonomy_default_vocabularies() {
+function content_type_library_taxonomy_default_vocabularies() {
   return array(
     'autores' => array(
       'name' => 'Autores',
