@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file template.php
+ */
+
+function Orbis_preprocess_node(&$variables) {
+  $node = $variables["node"];
+  dsm($node);
+  $variables["autor"] = $node->field_autor['und'][0]['taxonomy_term']->name;
+  $variables["imagen"] =  theme(
+    'image_style',
+    array(
+    'style_name' => 'thumbnail',
+    'path' => $node->field_imagen['und'][0]['uri']
+    )
+  );
+  $variables["editorial"] = $node->field_editorial['und'][0]['taxonomy_term']->name;
+  $variables["isbn"] = $node->field_isbn['und'][0]['value'];
+  $variables["ubicacion"] = $node->field_ubicacion['und'][0]['value'];
+  $variables["existencias"] = $node->field_existencias['und'][0]['value'];
+  $variables["fecha_publicacion"] = $node->field_fecha_publicacion['und'][0]['value'];
+  $variables["no_paginas"] = $node->field_no_paginas;
+}

@@ -10,44 +10,56 @@
 function content_type_libro_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-libro-field_ano_publicacion'
-  $field_instances['node-libro-field_ano_publicacion'] = array(
+  // Exported field_instance: 'node-libro-field_ano_de_publicacion'
+  $field_instances['node-libro-field_ano_de_publicacion'] = array(
     'bundle' => 'libro',
-    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Año en que fue publicado el libro.',
+    'description' => 'Año de publicación del libro.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
         'weight' => 3,
       ),
       'teaser' => array(
-        'label' => 'inline',
-        'module' => 'text',
+        'label' => 'above',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_ano_publicacion',
+    'field_name' => 'field_ano_de_publicacion',
     'label' => 'Año de publicación',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'date',
       'settings' => array(
-        'size' => 60,
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'none',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
       ),
-      'type' => 'text_textfield',
-      'weight' => 35,
+      'type' => 'date_text',
+      'weight' => 5,
     ),
   );
 
@@ -88,7 +100,7 @@ function content_type_libro_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 33,
+      'weight' => 3,
     ),
   );
 
@@ -129,7 +141,7 @@ function content_type_libro_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 34,
+      'weight' => 4,
     ),
   );
 
@@ -181,7 +193,7 @@ function content_type_libro_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 39,
+      'weight' => 7,
     ),
   );
 
@@ -221,7 +233,7 @@ function content_type_libro_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 10,
     ),
   );
 
@@ -257,14 +269,14 @@ function content_type_libro_field_default_field_instances() {
     'label' => 'Imágen',
     'required' => 1,
     'settings' => array(
-      'alt_field' => 1,
+      'alt_field' => 0,
       'default_image' => 1,
       'file_directory' => 'files/images/books',
       'file_extensions' => 'png jpg jpeg',
       'max_filesize' => '2 MB',
       'max_resolution' => '480x600',
       'min_resolution' => '100x100',
-      'title_field' => 1,
+      'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -275,7 +287,7 @@ function content_type_libro_field_default_field_instances() {
         'progress_indicator' => 'bar',
       ),
       'type' => 'image_image',
-      'weight' => 31,
+      'weight' => 2,
     ),
   );
 
@@ -315,7 +327,7 @@ function content_type_libro_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 9,
     ),
   );
 
@@ -345,6 +357,10 @@ function content_type_libro_field_default_field_instances() {
     'label' => 'No. páginas',
     'required' => 0,
     'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -355,7 +371,7 @@ function content_type_libro_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 37,
+      'weight' => 8,
     ),
   );
 
@@ -395,7 +411,7 @@ function content_type_libro_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 6,
     ),
   );
 
@@ -403,7 +419,7 @@ function content_type_libro_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Autor');
   t('Año de publicación');
-  t('Año en que fue publicado el libro.');
+  t('Año de publicación del libro.');
   t('Cantidad de ejemplares con los que cuenta la biblioteca de este libro.');
   t('Codigo de identificación interno de la biblioteca');
   t('Editorial');
