@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Busqueda avanzada feature.
+ */
+
+include_once 'busqueda_avanzada.features.inc';
