@@ -375,6 +375,46 @@ function content_type_library_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-libro-field_sinopsis'
+  $field_instances['node-libro-field_sinopsis'] = array(
+    'bundle' => 'libro',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_sinopsis',
+    'label' => 'Sinopsis',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 4,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-libro-field_ubicacion'
   $field_instances['node-libro-field_ubicacion'] = array(
     'bundle' => 'libro',
@@ -1022,6 +1062,7 @@ function content_type_library_field_default_field_instances() {
   t('Nombre del autor del libro');
   t('Nombre del autor del material.');
   t('Número de páginas que tiene el libro.');
+  t('Sinopsis');
   t('Ubicación');
 
   return $field_instances;

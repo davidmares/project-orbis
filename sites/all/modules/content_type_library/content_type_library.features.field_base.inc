@@ -258,6 +258,33 @@ function content_type_library_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_sinopsis'
+  $field_bases['field_sinopsis'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_sinopsis',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_ubicacion'
   $field_bases['field_ubicacion'] = array(
     'active' => 1,
