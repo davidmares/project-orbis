@@ -4,10 +4,10 @@
  */
 /* Custom container */
 body{
-  background: #333;
+  background: #3f3f3f;
 }
 .navbar,.navbar-inner,.footer, .container{
-  background: #333;
+  background: #3f3f3f;
   border: none;
 }
 .header{
@@ -22,46 +22,80 @@ body{
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#f9c48e), to(#ff8919));
 }
 
-#user-login-block{
-	background: #333;
+/* Cascada para el menu principal */
+.navbar-inner .menu  li a{
+	background: #3f3f3f;
+	color: #f90;
+	font-size: 15px;
+	text-shadow:none;
+}
+.navbar-inner .menu  li .active{
+	background: rgb(235, 197, 0);
+	color: #000;
+}
+.navbar-inner .menu  li a:hover,
+.navbar-inner .menu  li .active:hover{
+	background: #f90;
+	color: #000;
+}
+
+/*Cascada para el Bloque Login */
+#block-user-login{
+	background: #3f3f3f;
 	color: #fff;
 	display: block;
-	padding: 10px 0px 0px 10px;
+	padding: 15px 0px 0px 10px;
 	position: absolute;
 	top: -95px;
 	right: 0px;
-}
-#user-login-block li, #user-login-block ul{
-	list-style: none;
-	margin: 0px;
+	height: 120px;
 }
 
-#user-login-block label,#user-login-block button{
-	margin-top: -15px;
+#block-user-login .form-item{
+	margin-top: -20px;
+}
+
+#block-user-login label{
 	color: #f90;
 	font-size: 11px;
 }
-#user-login-block input[type="text"],#user-login-block input[type="password"]{
-	width: 150px;
-	padding: 0px 5px;
+
+#block-user-login .form-text{
+	color: #000;
+	font-size: 11px;
+	padding: 2px 5px;
 	margin-top: -5px;
-	font-size: 11px;
 }
-#user-login-block button{
-	padding: 0px 10px;
+#block-user-login ul{
+	list-style: none;
+	padding: 0px 0px 0px 50px;
+	margin-top: -20px;
 }
-.links a,.links a:visited,.links a:link{
-	font-size: 11px;
+#block-user-login button{
+	padding: 2px 5px;
+	color: #f90;
+	margin-top: -80px;
+}
+#block-user-login ul li a:link,
+#block-user-login ul li a:visited{
 	color: #f90;
 }
-#user-login-block button, .links{
+
+ /* Cascada para los link del footer */
+footer{
+	padding: 10px 0px 0px 0px;
+}
+footer #block-menu-menu-menu-footer ul li{
 	display: inline-block;
-	margin-top: -12px;
 }
-#user-login-block button{
-	margin-right: 5px;
-}
-.navbar-inner .menu .active{
-	background: #333;
+footer #block-menu-menu-menu-footer ul li a:link,
+footer #block-menu-menu-menu-footer ul li a:visited{
 	color: #f90;
+	font-size: 15px;
+	padding: 5px 10px;
 }
+footer #block-menu-menu-menu-footer ul li a:hover{
+	color:#000;
+	background: #f90;
+}
+
