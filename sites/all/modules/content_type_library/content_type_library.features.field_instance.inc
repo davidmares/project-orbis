@@ -104,6 +104,43 @@ function content_type_library_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-libro-field_categoria_libro'
+  $field_instances['node-libro-field_categoria_libro'] = array(
+    'bundle' => 'libro',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Categoría del medio de información.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_categoria_libro',
+    'label' => 'Categoría',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-libro-field_editorial'
   $field_instances['node-libro-field_editorial'] = array(
     'bundle' => 'libro',
@@ -548,6 +585,43 @@ function content_type_library_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-medios_electronicos-field_categoria_melectronico'
+  $field_instances['node-medios_electronicos-field_categoria_melectronico'] = array(
+    'bundle' => 'medios_electronicos',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_categoria_melectronico',
+    'label' => 'Categoría',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-medios_electronicos-field_editorial'
   $field_instances['node-medios_electronicos-field_editorial'] = array(
     'bundle' => 'medios_electronicos',
@@ -761,6 +835,43 @@ function content_type_library_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-revista-field_categoria_revista'
+  $field_instances['node-revista-field_categoria_revista'] = array(
+    'bundle' => 'revista',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_categoria_revista',
+    'label' => 'Categoría',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 9,
     ),
   );
 
@@ -1041,6 +1152,8 @@ function content_type_library_field_default_field_instances() {
   t('Cantidad de ejemplares con los que cuenta la biblioteca de esta revista.');
   t('Cantidad de ejemplares con los que cuenta la biblioteca de este libro.');
   t('Cantidad de ejemplares con los que cuenta la biblioteca.');
+  t('Categoría');
+  t('Categoría del medio de información.');
   t('Codigo de identificación interno de la biblioteca');
   t('Editorial');
   t('Estante en el que se encuentra el libro.');
