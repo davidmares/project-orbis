@@ -19,14 +19,16 @@ body{
 	background: rgba(200,200,200,0.4);
 }
 .breadcrumb,
+.well,
 .breadcrumb li a:link,
 .breadcrumb li a:visited{
-	background: rgba(200,200,200,0.6);
+	background: rgba(255,255,0,0.2);
 	color: #222;
 }
 .contenido{
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#f9c48e), to(#ff8919));
 }
+
 .pagination ul .active a:link,
 .pagination ul .active a:visited{
 	color: #f90;
