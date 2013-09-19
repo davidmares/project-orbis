@@ -211,12 +211,12 @@
  * @endcode
  */
 $databases = array (
-  'default' => 
+  'default' =>
   array (
-    'default' => 
+    'default' =>
     array (
-      'database' => 'orbis_database',
-      'username' => 'root',
+      'database' => 'projec_orbis',
+      'username' => 'drupal',
       'password' => '123',
       'host' => 'localhost',
       'port' => '',
