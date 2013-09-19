@@ -215,9 +215,9 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'project',
+      'database' => 'orbis_database',
       'username' => 'root',
-      'password' => 'drakomares',
+      'password' => '123',
       'host' => 'localhost',
       'port' => '',
       'driver' => 'mysql',
@@ -256,7 +256,7 @@ $update_free_access = FALSE;
  *   $drupal_hash_salt = file_get_contents('/home/example/salt.txt');
  *
  */
-$drupal_hash_salt = '_dHxECVKTTwhuCdMYoazFKmSZWzNzSETI4S1HzUDvhQ';
+$drupal_hash_salt = 'ESSk7jOePk6vgZKiF1sawVn5jIE-mR8fAmbKpS51dzM';
 
 /**
  * Base URL (optional).
