@@ -1,3 +1,3 @@
 [submodule "sites/all/modules/spl"]
         path = sites/all/modules/spl
-        utl = git@github.com:cecitorres/spl.git
+        url = git@github.com:cecitorres/spl.git
