@@ -211,9 +211,9 @@
  * @endcode
  */
 $databases = array (
-  'default' => 
+  'default' =>
   array (
-    'default' => 
+    'default' =>
     array (
       'database' => 'project',
       'username' => 'root',
@@ -256,7 +256,7 @@ $update_free_access = FALSE;
  *   $drupal_hash_salt = file_get_contents('/home/example/salt.txt');
  *
  */
-$drupal_hash_salt = '_dHxECVKTTwhuCdMYoazFKmSZWzNzSETI4S1HzUDvhQ';
+$drupal_hash_salt = 'ESSk7jOePk6vgZKiF1sawVn5jIE-mR8fAmbKpS51dzM';
 
 /**
  * Base URL (optional).
