@@ -18,6 +18,8 @@ stylesheets[all][] = css/style.css
 stylesheets[all][] = css/style2.css
 
 
+scripts[] = jquery.js
+
 ;**********************************
 ; METHOD 1: Bootstrap Source Files
 ;**********************************
