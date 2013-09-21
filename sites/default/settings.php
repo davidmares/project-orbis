@@ -211,11 +211,11 @@
  * @endcode
  */
 $databases = array (
-  'default' => 
+  'default' =>
   array (
-    'default' => 
+    'default' =>
     array (
-      'database' => 'orbis_database',
+      'database' => 'orbisreg',
       'username' => 'root',
       'password' => '123',
       'host' => 'localhost',
