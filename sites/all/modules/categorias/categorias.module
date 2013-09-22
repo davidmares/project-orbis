@@ -1,0 +1,101 @@
+<?php 
+/**
+ * Implements hook_menu()
+ */
+function categorias_menu(){
+	$items["get/content/cat/%"]= array(
+		'page callback' => '_getContentCat',
+		'page arguments' => array(3),
+		'type' => MENU_CALLBALCK	
+	);
+
+	return $items;
+}
+
+/**
+ * Implements hook_block_info()
+ */
+function categorias_block_info(){
+	$blocks["categorias_list"] = array(
+		'info' => t("Lista de las Categorias"),
+		'cache' => DRUPAL_NO_CACHE
+	);
+	$blocks["carousel"] = array(
+		'info' => t("Home Carousel"),
+		'cache' => DRUPAL_NO_CACHE
+	);
+
+	return $blocks;
+}
+
+/**
+ * Implements hook_block_view()
+ */
+function categorias_block_view($delta){
+	drupal_add_js(drupal_get_path("module","categorias") . "/carousel.js");
+	drupal_add_js(drupal_get_path("module","categorias") . "/categorias.js");
+	drupal_add_css(drupal_get_path("module","categorias") . "/categorias.css");
+
+	$block = array();
+	switch ($delta) {
+		case 'categorias_list':
+			$categorias = _getCategorias();
+			$block["content"] = theme("listCategorias", array('categorias' => $categorias));
+			break;
+		case 'carousel':
+			$nodos = _getContent();
+			$block["content"] = theme("carousel", array('nodos' => $nodos));
+			break;
+	}
+	return $block;
+}
+
+/**
+ * Funcion que trae todas las categorias.
+ * @return categorias array de categorias
+ */
+function _getCategorias(){
+	$query = db_query("SELECT data.name FROM {taxonomy_term_data} data INNER JOIN {taxonomy_vocabulary} voca ON (data.vid = voca.vid) WHERE voca.machine_name LIKE 'categorias'");
+
+	$categorias = array();
+	foreach ($query as $cat) {
+		$categorias[] = $cat;
+	}
+
+	return $categorias;
+}
+
+/**
+ * Funcion que carga los nodos mas recientes
+ * @return nodos array de nodos
+ */
+function _getContent(){
+	$query = db_query("SELECT nid FROM {node} WHERE type ='libro' OR type ='medios_electronicos' OR type ='revista' ORDER BY created DESC LIMIT 10");
+
+	$nodos = array();
+	foreach ($query as $nid) {
+		$nodos[] = node_load($nid->nid);
+	}
+
+	return $nodos;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function categorias_theme(){
+	return array(
+		'listCategorias' => array(
+			'variables' => array(
+				'categorias' => NULL
+			),
+			'template' => 'list-categorias-block'
+		),
+		'carousel' => array(
+			'variables' => array(
+				'nodos' => NULL
+			),
+			'template' => 'carousel-categorias-block'
+		)
+	);
+}
