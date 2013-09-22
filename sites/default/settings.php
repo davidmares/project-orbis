@@ -215,7 +215,7 @@ $databases = array (
   array (
     'default' =>
     array (
-      'database' => 'orbisreg',
+      'database' => 'orbis_database',
       'username' => 'root',
       'password' => '123',
       'host' => 'localhost',
