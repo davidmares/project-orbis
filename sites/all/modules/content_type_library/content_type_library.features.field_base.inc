@@ -10,6 +10,35 @@
 function content_type_library_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field__autor'
+  $field_bases['field__autor'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field__autor',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 80,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_ano_de_publicacion'
   $field_bases['field_ano_de_publicacion'] = array(
     'active' => 1,
@@ -40,38 +69,62 @@ function content_type_library_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_autor'
-  $field_bases['field_autor'] = array(
+  // Exported field_base: 'field_autor_melec'
+  $field_bases['field_autor_melec'] = array(
     'active' => 1,
-    'cardinality' => 5,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_autor',
+    'field_name' => 'field_autor_melec',
     'foreign keys' => array(
-      'tid' => array(
+      'format' => array(
         'columns' => array(
-          'tid' => 'tid',
+          'format' => 'format',
         ),
-        'table' => 'taxonomy_term_data',
+        'table' => 'filter_format',
       ),
     ),
     'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'taxonomy',
+    'module' => 'text',
     'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'autores',
-          'parent' => 0,
-        ),
-      ),
+      'max_length' => 80,
     ),
     'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_autor_revista'
+  $field_bases['field_autor_revista'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_autor_revista',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 80,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_categoria'
@@ -299,6 +352,60 @@ function content_type_library_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_sinopsis',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_sinopsis_melec'
+  $field_bases['field_sinopsis_melec'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_sinopsis_melec',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_sinopsis_revista'
+  $field_bases['field_sinopsis_revista'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_sinopsis_revista',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
