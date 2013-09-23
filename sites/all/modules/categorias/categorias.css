@@ -5,6 +5,7 @@
   background: #ccc;
 }
 .carousel img {
+	padding-top: 45px;
 	width: 200px;
   display: hidden; /* hide images until carousel prepares them */
   cursor: pointer; /* not needed if you wrap carousel items in links */
@@ -12,7 +13,7 @@
 
 .block-categorias ul{
 	list-style: none;
-	text-align: right;
+	text-align: left;
 	font-size: 16px;
 }
 .block-categorias ul li a:link,
@@ -24,4 +25,13 @@
 .block-categorias ul li a:hover{
 	background: #f93;
 	text-decoration: none;
+}
+titulo{
+	display: block;
+	text-align: center;
+	color:#f90;
+	font-size: 50px;
+	margin-top: -15px;
+	padding-top: 0px;
+	text-shadow: 0px 0px 5px #000;
 }

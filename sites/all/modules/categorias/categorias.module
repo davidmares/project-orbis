@@ -59,7 +59,7 @@ function categorias_block_view($delta){
 			$block["content"] = theme("carousel", array('nodos' => $nodos));
 			break;
 		case 'contenido':
-			$block["content"] = "<div id='content-categorias'></div>";
+			$block["content"] = "<div id='content-categorias' ></div>";
 			break;
 	}
 	return $block;
@@ -77,6 +77,9 @@ function _getCategorias(){
 	$query = db_query("SELECT data.name FROM {taxonomy_term_data} data INNER JOIN {taxonomy_vocabulary} voca ON (data.vid = voca.vid) WHERE voca.machine_name LIKE 'categorias'");
 
 	$categorias = array();
+
+	$categorias[] = l("Todos",'get/nojs/Todos', array('attributes' => array('class' => array('use-ajax'))));
+	
 	foreach ($query as $cat) {
 		$categorias[] = l($cat->name,'get/nojs/'.$cat->name, array('attributes' => array('class' => array('use-ajax'))));
 	}
@@ -132,6 +135,7 @@ function categorias_theme(){
  *   Comandos de Ajax.
  */
 function _getContentCat($js, $cat) {
+	drupal_set_message($cat);
   if ($js) {
     // Si entró aquí, el javascript está habilitado.
     ctools_include('ajax');
@@ -139,14 +143,16 @@ function _getContentCat($js, $cat) {
  		$query = db_query("SELECT nid FROM {node} WHERE type = :categoria ORDER BY created DESC ", array(":categoria" => $cat));
   	
   	$nodos = array();
-		
+		$i=0;
 		foreach ($query as $nid) {
-			$nodos[] = node_load($nid->nid);
+			$nodos[$i] = node_load($nid->nid);
+			$i++;
 		}
 
     $commands = array();
 
     $variables = array(
+    	'cat' => $cat,
       'nodos' => $nodos,
       'html_id' => '#content-categorias',
     );
@@ -157,7 +163,7 @@ function _getContentCat($js, $cat) {
     exit;
   }
   else {
-    return print "Hola mundo";
-
+    drupal_set_message(t("Not an ajax call."), 'error');
+    return MENU_ACCESS_DENIED;
   }
 }
