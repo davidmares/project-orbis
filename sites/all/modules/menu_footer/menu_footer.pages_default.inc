@@ -406,12 +406,12 @@ El IIIEPE se reserva el derecho de resolución de cualquier circunstancia no pre
       'body' => '<div class=\'well\'><h1>Contactar</h1></div>
 <div class=\'well\'>En el IIIEPE queermos tener la major comunicación contigo, para resolver tus inquietudes y recibir tus sugerencias. Por favor selecciona a qué departamento quieres contactar.
 
-<strong>Dirección postal</strong>
+<strong><h3>Dirección postal</h3></strong>
 20 de Noviembre S/N entre Tapia y Aramberri
 Centro de Monterrey. C.P. 64700. Monterrey, Nuevo León, México
 Monterrey, Nuevo León, México
 
-<strong>Teléfonos</strong>
+<strong><h4>Teléfonos</h4></strong>
 Conmutador: 52+(81)2020-7350
 Fax: 52+(81)2020-2940 </div>',
       'format' => 'full_html',
