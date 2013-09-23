@@ -211,11 +211,11 @@
  * @endcode
  */
 $databases = array (
-  'default' => 
+  'default' =>
   array (
-    'default' => 
+    'default' =>
     array (
-      'database' => 'orbis',
+      'database' => 'project',
       'username' => 'root',
       'password' => 'drakomares',
       'host' => 'localhost',
@@ -256,7 +256,7 @@ $update_free_access = FALSE;
  *   $drupal_hash_salt = file_get_contents('/home/example/salt.txt');
  *
  */
-$drupal_hash_salt = 'UZxEzjsCBxxI0Jhdrda35O0QVaiT5yJqXcULuScItMM';
+$drupal_hash_salt = 'ESSk7jOePk6vgZKiF1sawVn5jIE-mR8fAmbKpS51dzM';
 
 /**
  * Base URL (optional).

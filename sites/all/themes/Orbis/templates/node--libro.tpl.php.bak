@@ -1,0 +1,8 @@
+<?php //dsm($node); ?>
+
+<?php print  $autor; ?>
+<?php print  $imagen; ?>
+<?php print  $editorial; ?>
+<?php print  $isbn; ?>
+<?php print  $existencias; ?>
+

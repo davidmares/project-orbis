@@ -1,0 +1,194 @@
+<?php 
+/**
+ * Implements hook_menu()
+ */
+function categorias_menu(){
+
+  $items['get/%ctools_js/%'] = array(
+    'title' => 'Pagina para uso de ajax',
+    'page callback' => '_getContentCat',
+    'page arguments' => array(1, 2),
+    'access callback' => '_access',
+    'access arguments' => array(2)
+  );
+
+  $items['get/content/all'] = array(
+    'title' => 'Pagina para uso de ajax',
+    'page callback' => '_getContentCat',
+    'page arguments' => array(1, 2),
+    'access callback' => '_access',
+    'access arguments' => array(2)
+  );
+	return $items;
+}
+
+function _access($op) {
+  return TRUE;
+}
+/**
+ * Implements hook_block_info()
+ */
+function categorias_block_info(){
+	$blocks["categorias_list"] = array(
+		'info' => t("Lista de las Categorias"),
+		'cache' => DRUPAL_NO_CACHE
+	);
+	$blocks["carousel"] = array(
+		'info' => t("Home Carousel"),
+		'cache' => DRUPAL_NO_CACHE
+	);
+	$blocks["contenido"] = array(
+		'info' => t("Contenido Home"),
+		'cache' => DRUPAL_NO_CACHE
+	);
+
+	return $blocks;
+}
+
+/**
+ * Implements hook_block_view()
+ */
+function categorias_block_view($delta){
+	drupal_add_js(drupal_get_path("module","categorias") . "/carousel.js");
+	drupal_add_js(drupal_get_path("module","categorias") . "/categorias.js");
+	drupal_add_css(drupal_get_path("module","categorias") . "/categorias.css");
+
+	$block = array();
+	switch ($delta) {
+		case 'categorias_list':
+			$categorias = _getCategorias();
+			$block["content"] = theme("listCategorias", array('categorias' => $categorias));
+			break;
+		case 'carousel':
+			$nodos = _getContent();
+			$block["content"] = theme("carousel", array('nodos' => $nodos));
+			break;
+		case 'contenido':
+			$block["content"] = "<div id='content-categorias' ></div>";
+			break;
+	}
+	return $block;
+}
+
+/**
+ * Funcion que trae todas las categorias.
+ * @return categorias array de categorias
+ */
+function _getCategorias(){
+
+	ctools_include('ajax');
+  drupal_add_library('system', 'drupal.ajax');
+
+	$query = db_query("SELECT data.name FROM {taxonomy_term_data} data INNER JOIN {taxonomy_vocabulary} voca ON (data.vid = voca.vid) WHERE voca.machine_name LIKE 'categorias'");
+
+	$categorias = array();
+
+	$categorias[] = l("Todos",'get/nojs/Todos', array('attributes' => array('class' => array('use-ajax'),'id' => 'all')));
+	
+	foreach ($query as $cat) {
+		$categorias[] = l($cat->name,'get/nojs/'.$cat->name, array('attributes' => array('class' => array('use-ajax'))));
+	}
+
+	return $categorias;
+}
+
+/**
+ * Funcion que carga los nodos mas recientes
+ * @return nodos array de nodos
+ */
+function _getContent(){
+	$query = db_query("SELECT nid FROM {node} WHERE type ='libro' OR type ='medios_electronicos' OR type ='revista' ORDER BY created DESC LIMIT 15");
+
+	$nodos = array();
+	foreach ($query as $nid) {
+		$nodos[] = node_load($nid->nid);
+	}
+
+	return $nodos;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function categorias_theme(){
+	return array(
+		'listCategorias' => array(
+			'variables' => array(
+				'categorias' => NULL
+			),
+			'template' => 'list-categorias-block'
+		),
+		'carousel' => array(
+			'variables' => array(
+				'nodos' => NULL
+			),
+			'template' => 'carousel-categorias-block'
+		)
+	);
+}
+
+/**
+ * Función que procesa el ajax, y devuelve el contenido segun la categoria.
+ *
+ * @param bool $js
+ *   Indica si la acción es por ajax o no.
+ *
+ * @param object $cat
+ *   Identificador del usuario.
+ *
+ * @return string
+ *   Comandos de Ajax.
+ */
+function _getContentCat($js, $cat = NULL) {
+	drupal_set_message($cat);
+  if ($js) {
+
+    ctools_include('ajax');
+
+ 		if($cat == 'Todos' || !isset($cat)){
+ 			$query = db_query("SELECT nid FROM {node} WHERE type ='libro' OR type ='medios_electronicos' OR type ='revista' ORDER BY created DESC");
+ 		}
+ 		else{
+	 		$query = db_query("SELECT a.nid FROM {taxonomy_index} a INNER JOIN {taxonomy_term_data} b ON (a.tid = b.tid) WHERE b.name LIKE :categoria", array(":categoria" => $cat));
+		}
+
+  	$nodos = array();
+		$i=-1;
+		foreach ($query as $nid) {
+			$i++;
+			$nodos[$i] = node_load($nid->nid);
+ 		}
+ 		$j=-1;
+ 		$editoriales = array();
+ 		foreach ($nodos as $nodo) {
+ 			$tid = $nodo->field_editorial['und'][0]["tid"];
+ 			$query = db_query("SELECT a.name FROM taxonomy_term_data a INNER JOIN taxonomy_vocabulary b ON (a.vid = b.vid) WHERE b.name = 'Editoriales' AND a.tid LIKE :tid", array(":tid" => $tid));
+ 			$j++;
+ 			foreach ($query as $result) {
+	 			$editoriales[$j] = $result;
+ 			}
+ 		}
+
+    $commands = array();
+
+    $variables = array(
+    	'tam' => $i,
+      'nodos' => $nodos,
+      'editoriales' => $editoriales,
+      'html_id' => '#content-categorias',
+    );
+ 
+    $commands[] = ajax_command_invoke(NULL, 'cargar_contenido', array(json_encode($variables)));
+ 
+    print ajax_render($commands);
+    exit;
+  }
+  else {
+    drupal_set_message(t("Not an ajax call."), 'error');
+    return MENU_ACCESS_DENIED;
+  }
+}
+
+
+
+

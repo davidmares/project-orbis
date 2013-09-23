@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Menu Footer feature.
+ */
+
+include_once 'menu_footer.features.inc';

@@ -1,0 +1,139 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+/* Custom container */
+body{
+  background: #3f3f3f;
+}
+.navbar,.navbar-inner,.footer, .container{
+  background: #3f3f3f;
+  border: none;
+}
+.header{
+	padding: 10px 0px 0px 0px;
+	margin: 5px auto;
+	color: #f90;
+}
+.main-container{
+	background: #ffc08b;
+}
+.breadcrumb,
+.well,
+.breadcrumb li a:link,
+.breadcrumb li a:visited{
+	background: #ffdcc2;
+	color: #222;
+}
+.well{
+	border: 2px solid #e3a16f;
+}
+.contenido{
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#f9c48e), to(#ff8919));
+}
+
+.pagination ul .active a:link,
+.pagination ul .active a:visited{
+	color: #f90;
+	background: #ff9;
+}
+.pagination ul li a:link,
+.pagination ul li a:visited{
+	color: #f90;
+	background: #ff6;
+}
+.pagination ul .active a:hover,
+.pagination ul li a:hover{
+	color: #fff;
+	background: #f90;
+}
+
+/* Cascada para el menu principal */
+.navbar-inner .menu  li a{
+	background: #3f3f3f;
+	color: #f90;
+	font-size: 15px;
+	text-shadow:none;
+}
+.navbar-inner .menu  li .active{
+	background: rgb(235, 197, 0);
+	color: #000;
+}
+.navbar-inner .menu  li a:hover,
+.navbar-inner .menu  li .active:hover{
+	background: #f90;
+	color: #000;
+}
+
+/*Cascada para el Bloque Login */
+#block-user-login{
+	background: #3f3f3f;
+	color: #fff;
+	display: block;
+	padding: 15px 0px 0px 10px;
+	position: absolute;
+	top: -95px;
+	right: 0px;
+	height: 120px;
+}
+
+#block-user-login .form-item{
+	margin-top: -20px;
+}
+
+#block-user-login label{
+	color: #f90;
+	font-size: 11px;
+}
+
+#block-user-login .form-text{
+	color: #000;
+	font-size: 11px;
+	padding: 2px 5px;
+	margin-top: -5px;
+}
+#block-user-login ul{
+	list-style: none;
+	padding: 0px 0px 0px 50px;
+	margin-top: -20px;
+}
+#block-user-login button{
+	padding: 2px 5px;
+	color: #f90;
+	margin-top: -80px;
+}
+#block-user-login ul li a:link,
+#block-user-login ul li a:visited{
+	color: #f90;
+}
+
+ /* Cascada para los link del footer */
+footer{
+	padding: 10px 0px 0px 0px;
+}
+footer #block-menu-menu-menu-footer ul li{
+	display: inline-block;
+}
+footer #block-menu-menu-menu-footer ul li a:link,
+footer #block-menu-menu-menu-footer ul li a:visited{
+	color: #f90;
+	font-size: 15px;
+	padding: 5px 10px;
+}
+footer #block-menu-menu-menu-footer ul li a:hover{
+	color:#000;
+	background: #f90;
+}
+#block-block-1{
+	width: 200px;
+	float: right;
+	margin-bottom: 50px;
+	padding-right: 50px;
+}
+.logo-footer{
+	float:right;
+	display: inline-block;
+}
+.logo-footer img{
+	width: 120px;
+}
