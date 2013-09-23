@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Vista de los nodos feature.
+ */
+
+include_once 'vista_de_los_nodos.features.inc';
