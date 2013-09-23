@@ -1,0 +1,7 @@
+name = categorias
+core = 7.x
+description = Permite crear un carrousen el bloque de los tipos de contenidos de la biblioteca, asi como tambien una lista de categorias que filtrarán la vista del catalogo del home.
+package = Other
+version = 7.x.1.0
+dependencies[] = block
+files[] = categorias.module
