@@ -16,14 +16,17 @@ body{
 	color: #f90;
 }
 .main-container{
-	background: rgba(200,200,200,0.4);
+	background: #ffc08b;
 }
 .breadcrumb,
 .well,
 .breadcrumb li a:link,
 .breadcrumb li a:visited{
-	background: rgba(255,255,0,0.2);
+	background: #ffdcc2;
 	color: #222;
+}
+.well{
+	border: 2px solid #e3a16f;
 }
 .contenido{
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#f9c48e), to(#ff8919));
