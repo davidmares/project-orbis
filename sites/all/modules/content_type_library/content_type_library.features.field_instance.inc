@@ -10,6 +10,46 @@
 function content_type_library_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-libro-field__autor'
+  $field_instances['node-libro-field__autor'] = array(
+    'bundle' => 'libro',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field__autor',
+    'label' => 'Autor',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-libro-field_ano_de_publicacion'
   $field_instances['node-libro-field_ano_de_publicacion'] = array(
     'bundle' => 'libro',
@@ -59,16 +99,16 @@ function content_type_library_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-libro-field_categoria_libro'
-  $field_instances['node-libro-field_categoria_libro'] = array(
+  // Exported field_instance: 'node-libro-field_categoria'
+  $field_instances['node-libro-field_categoria'] = array(
     'bundle' => 'libro',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Categoría del medio de información.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -85,7 +125,7 @@ function content_type_library_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_categoria_libro',
+    'field_name' => 'field_categoria',
     'label' => 'Categoría',
     'required' => 1,
     'settings' => array(
@@ -96,7 +136,7 @@ function content_type_library_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -137,7 +177,7 @@ function content_type_library_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -407,7 +447,7 @@ function content_type_library_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 12,
     ),
   );
 
@@ -447,7 +487,7 @@ function content_type_library_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -504,19 +544,19 @@ function content_type_library_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-medios_electronicos-field_autor'
-  $field_instances['node-medios_electronicos-field_autor'] = array(
+  // Exported field_instance: 'node-medios_electronicos-field_autor_melec'
+  $field_instances['node-medios_electronicos-field_autor_melec'] = array(
     'bundle' => 'medios_electronicos',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Nombre del autor del material.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 1,
+        'type' => 'text_default',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -526,26 +566,26 @@ function content_type_library_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_autor',
+    'field_name' => 'field_autor_melec',
     'label' => 'Autor',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
+      'active' => 1,
+      'module' => 'text',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 3,
+      'type' => 'text_textfield',
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-medios_electronicos-field_categoria_melectronico'
-  $field_instances['node-medios_electronicos-field_categoria_melectronico'] = array(
+  // Exported field_instance: 'node-medios_electronicos-field_categoria'
+  $field_instances['node-medios_electronicos-field_categoria'] = array(
     'bundle' => 'medios_electronicos',
     'default_value' => NULL,
     'deleted' => 0,
@@ -556,7 +596,7 @@ function content_type_library_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -566,7 +606,7 @@ function content_type_library_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_categoria_melectronico',
+    'field_name' => 'field_categoria',
     'label' => 'Categoría',
     'required' => 1,
     'settings' => array(
@@ -617,7 +657,7 @@ function content_type_library_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -797,8 +837,48 @@ function content_type_library_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-revista-field_categoria_revista'
-  $field_instances['node-revista-field_categoria_revista'] = array(
+  // Exported field_instance: 'node-revista-field_autor_revista'
+  $field_instances['node-revista-field_autor_revista'] = array(
+    'bundle' => 'revista',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_autor_revista',
+    'label' => 'Autor',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-revista-field_categoria'
+  $field_instances['node-revista-field_categoria'] = array(
     'bundle' => 'revista',
     'default_value' => NULL,
     'deleted' => 0,
@@ -809,7 +889,7 @@ function content_type_library_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -819,7 +899,7 @@ function content_type_library_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_categoria_revista',
+    'field_name' => 'field_categoria',
     'label' => 'Categoría',
     'required' => 1,
     'settings' => array(
@@ -916,7 +996,7 @@ function content_type_library_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -969,7 +1049,7 @@ function content_type_library_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -1099,7 +1179,7 @@ function content_type_library_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1112,7 +1192,6 @@ function content_type_library_field_default_field_instances() {
   t('Cantidad de ejemplares con los que cuenta la biblioteca de este libro.');
   t('Cantidad de ejemplares con los que cuenta la biblioteca.');
   t('Categoría');
-  t('Categoría del medio de información.');
   t('Codigo de identificación interno de la biblioteca');
   t('Editorial');
   t('Estante en el que se encuentra el libro.');
@@ -1131,7 +1210,6 @@ function content_type_library_field_default_field_instances() {
   t('Nombre de la casa editorial de la revista.');
   t('Nombre de la casa editorial del libro.');
   t('Nombre de la casa editorial.');
-  t('Nombre del autor del material.');
   t('Número de páginas que tiene el libro.');
   t('Sinopsis');
   t('Ubicación');
