@@ -12,14 +12,19 @@ function categorias_menu(){
     'access arguments' => array(2)
   );
 
+  $items['get/content/all'] = array(
+    'title' => 'Pagina para uso de ajax',
+    'page callback' => '_getContentCat',
+    'page arguments' => array(1, 2),
+    'access callback' => '_access',
+    'access arguments' => array(2)
+  );
 	return $items;
 }
 
 function _access($op) {
   return TRUE;
 }
-
-
 /**
  * Implements hook_block_info()
  */
@@ -78,7 +83,7 @@ function _getCategorias(){
 
 	$categorias = array();
 
-	$categorias[] = l("Todos",'get/nojs/Todos', array('attributes' => array('class' => array('use-ajax'))));
+	$categorias[] = l("Todos",'get/nojs/Todos', array('attributes' => array('class' => array('use-ajax'),'id' => 'all')));
 	
 	foreach ($query as $cat) {
 		$categorias[] = l($cat->name,'get/nojs/'.$cat->name, array('attributes' => array('class' => array('use-ajax'))));
@@ -92,7 +97,7 @@ function _getCategorias(){
  * @return nodos array de nodos
  */
 function _getContent(){
-	$query = db_query("SELECT nid FROM {node} WHERE type ='libro' OR type ='medios_electronicos' OR type ='revista' ORDER BY created DESC LIMIT 10");
+	$query = db_query("SELECT nid FROM {node} WHERE type ='libro' OR type ='medios_electronicos' OR type ='revista' ORDER BY created DESC LIMIT 15");
 
 	$nodos = array();
 	foreach ($query as $nid) {
@@ -134,26 +139,42 @@ function categorias_theme(){
  * @return string
  *   Comandos de Ajax.
  */
-function _getContentCat($js, $cat) {
+function _getContentCat($js, $cat = NULL) {
 	drupal_set_message($cat);
   if ($js) {
-    // Si entró aquí, el javascript está habilitado.
+
     ctools_include('ajax');
- 		
- 		$query = db_query("SELECT nid FROM {node} WHERE type = :categoria ORDER BY created DESC ", array(":categoria" => $cat));
-  	
-  	$nodos = array();
-		$i=0;
-		foreach ($query as $nid) {
-			$nodos[$i] = node_load($nid->nid);
-			$i++;
+
+ 		if($cat == 'Todos' || !isset($cat)){
+ 			$query = db_query("SELECT nid FROM {node} WHERE type ='libro' OR type ='medios_electronicos' OR type ='revista' ORDER BY created DESC");
+ 		}
+ 		else{
+	 		$query = db_query("SELECT a.nid FROM {taxonomy_index} a INNER JOIN {taxonomy_term_data} b ON (a.tid = b.tid) WHERE b.name LIKE :categoria", array(":categoria" => $cat));
 		}
+
+  	$nodos = array();
+		$i=-1;
+		foreach ($query as $nid) {
+			$i++;
+			$nodos[$i] = node_load($nid->nid);
+ 		}
+ 		$j=-1;
+ 		$editoriales = array();
+ 		foreach ($nodos as $nodo) {
+ 			$tid = $nodo->field_editorial['und'][0]["tid"];
+ 			$query = db_query("SELECT a.name FROM taxonomy_term_data a INNER JOIN taxonomy_vocabulary b ON (a.vid = b.vid) WHERE b.name = 'Editoriales' AND a.tid LIKE :tid", array(":tid" => $tid));
+ 			$j++;
+ 			foreach ($query as $result) {
+	 			$editoriales[$j] = $result;
+ 			}
+ 		}
 
     $commands = array();
 
     $variables = array(
-    	'cat' => $cat,
+    	'tam' => $i,
       'nodos' => $nodos,
+      'editoriales' => $editoriales,
       'html_id' => '#content-categorias',
     );
  
@@ -167,3 +188,7 @@ function _getContentCat($js, $cat) {
     return MENU_ACCESS_DENIED;
   }
 }
+
+
+
+

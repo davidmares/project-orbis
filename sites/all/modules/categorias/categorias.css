@@ -6,7 +6,7 @@
 }
 .carousel img {
 	padding-top: 45px;
-	width: 200px;
+	width: 180px;
   display: hidden; /* hide images until carousel prepares them */
   cursor: pointer; /* not needed if you wrap carousel items in links */
 }
@@ -18,13 +18,14 @@
 }
 .block-categorias ul li a:link,
 .block-categorias ul li a:visited{
-	color: #000;
+	color: #a40;
 	display: block;
 	padding: 5px 20px;
 }
 .block-categorias ul li a:hover{
 	background: #f93;
 	text-decoration: none;
+	color: #fff;
 }
 titulo{
 	display: block;
@@ -34,4 +35,26 @@ titulo{
 	margin-top: -15px;
 	padding-top: 0px;
 	text-shadow: 0px 0px 5px #000;
+}
+.content-cat{
+	display: inline-block;
+	margin-right: 15px;
+	height: 150px;
+}
+.content-cat img,
+.content-cat div{
+	display: inline-block;
+	vertical-align: top;
+}
+.content-cat img{
+	width: 90px;
+	margin-right: 5px;
+}
+.content-cat div{
+	overflow: hidden;
+	width: 180px;
+}
+.content-cat span{
+	color: #c50;
+	font-weight: bold;
 }
