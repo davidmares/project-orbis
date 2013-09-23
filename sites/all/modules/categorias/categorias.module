@@ -3,14 +3,22 @@
  * Implements hook_menu()
  */
 function categorias_menu(){
-	$items["get/content/cat/%"]= array(
-		'page callback' => '_getContentCat',
-		'page arguments' => array(3),
-		'type' => MENU_CALLBALCK	
-	);
+
+  $items['get/%ctools_js/%'] = array(
+    'title' => 'Pagina para uso de ajax',
+    'page callback' => '_getContentCat',
+    'page arguments' => array(1, 2),
+    'access callback' => '_access',
+    'access arguments' => array(2)
+  );
 
 	return $items;
 }
+
+function _access($op) {
+  return TRUE;
+}
+
 
 /**
  * Implements hook_block_info()
@@ -22,6 +30,10 @@ function categorias_block_info(){
 	);
 	$blocks["carousel"] = array(
 		'info' => t("Home Carousel"),
+		'cache' => DRUPAL_NO_CACHE
+	);
+	$blocks["contenido"] = array(
+		'info' => t("Contenido Home"),
 		'cache' => DRUPAL_NO_CACHE
 	);
 
@@ -46,6 +58,9 @@ function categorias_block_view($delta){
 			$nodos = _getContent();
 			$block["content"] = theme("carousel", array('nodos' => $nodos));
 			break;
+		case 'contenido':
+			$block["content"] = "<div id='content-categorias'></div>";
+			break;
 	}
 	return $block;
 }
@@ -55,11 +70,15 @@ function categorias_block_view($delta){
  * @return categorias array de categorias
  */
 function _getCategorias(){
+
+	ctools_include('ajax');
+  drupal_add_library('system', 'drupal.ajax');
+
 	$query = db_query("SELECT data.name FROM {taxonomy_term_data} data INNER JOIN {taxonomy_vocabulary} voca ON (data.vid = voca.vid) WHERE voca.machine_name LIKE 'categorias'");
 
 	$categorias = array();
 	foreach ($query as $cat) {
-		$categorias[] = $cat;
+		$categorias[] = l($cat->name,'get/nojs/'.$cat->name, array('attributes' => array('class' => array('use-ajax'))));
 	}
 
 	return $categorias;
@@ -98,4 +117,47 @@ function categorias_theme(){
 			'template' => 'carousel-categorias-block'
 		)
 	);
+}
+
+/**
+ * Función que procesa el ajax, y devuelve el contenido segun la categoria.
+ *
+ * @param bool $js
+ *   Indica si la acción es por ajax o no.
+ *
+ * @param object $cat
+ *   Identificador del usuario.
+ *
+ * @return string
+ *   Comandos de Ajax.
+ */
+function _getContentCat($js, $cat) {
+  if ($js) {
+    // Si entró aquí, el javascript está habilitado.
+    ctools_include('ajax');
+ 		
+ 		$query = db_query("SELECT nid FROM {node} WHERE type = :categoria ORDER BY created DESC ", array(":categoria" => $cat));
+  	
+  	$nodos = array();
+		
+		foreach ($query as $nid) {
+			$nodos[] = node_load($nid->nid);
+		}
+
+    $commands = array();
+
+    $variables = array(
+      'nodos' => $nodos,
+      'html_id' => '#content-categorias',
+    );
+ 
+    $commands[] = ajax_command_invoke(NULL, 'cargar_contenido', array(json_encode($variables)));
+ 
+    print ajax_render($commands);
+    exit;
+  }
+  else {
+    return print "Hola mundo";
+
+  }
 }

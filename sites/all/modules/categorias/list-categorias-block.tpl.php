@@ -10,9 +10,7 @@
 		<li><a href="#">Todos</a></li>
 		<?php foreach($categorias as $categoria): ?>
 			<li>
-			 	<a href="#">
-			 		<?php print $categoria->name; ?>
-			 	</a> 
+			 	<?php print $categoria; ?>
 			</li>
 		<?php endforeach; ?>
 	</ul>
