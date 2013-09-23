@@ -13,7 +13,7 @@ function panel_home_default_page_manager_pages() {
   $page->api_version = 1;
   $page->name = 'panel_home';
   $page->task = 'page';
-  $page->admin_title = '';
+  $page->admin_title = 'Panel Home';
   $page->admin_description = 'Panel para la pagina principal';
   $page->path = 'home';
   $page->access = array();
