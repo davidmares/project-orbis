@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Relacionado feature.
+ */
+
+include_once 'relacionado.features.inc';
