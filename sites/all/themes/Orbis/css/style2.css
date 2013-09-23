@@ -16,14 +16,17 @@ body{
 	color: #f90;
 }
 .main-container{
-	background: rgba(200,200,200,0.4);
+	background: #ffc08b;
 }
 .breadcrumb,
 .well,
 .breadcrumb li a:link,
 .breadcrumb li a:visited{
-	background: rgba(255,255,0,0.2);
+	background: #ffdcc2;
 	color: #222;
+}
+.well{
+	border: 2px solid #e3a16f;
 }
 .contenido{
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#f9c48e), to(#ff8919));
@@ -121,4 +124,16 @@ footer #block-menu-menu-menu-footer ul li a:hover{
 	color:#000;
 	background: #f90;
 }
-
+#block-block-1{
+	width: 200px;
+	float: right;
+	margin-bottom: 50px;
+	padding-right: 50px;
+}
+.logo-footer{
+	float:right;
+	display: inline-block;
+}
+.logo-footer img{
+	width: 120px;
+}

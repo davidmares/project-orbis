@@ -1,0 +1,60 @@
+.carousel {
+  width:900px;
+  height: 300px;
+  display: relative;
+  background: #ccc;
+}
+.carousel img {
+	padding-top: 45px;
+	width: 180px;
+  display: hidden; /* hide images until carousel prepares them */
+  cursor: pointer; /* not needed if you wrap carousel items in links */
+}
+
+.block-categorias ul{
+	list-style: none;
+	text-align: left;
+	font-size: 16px;
+}
+.block-categorias ul li a:link,
+.block-categorias ul li a:visited{
+	color: #a40;
+	display: block;
+	padding: 5px 20px;
+}
+.block-categorias ul li a:hover{
+	background: #f93;
+	text-decoration: none;
+	color: #fff;
+}
+titulo{
+	display: block;
+	text-align: center;
+	color:#f90;
+	font-size: 50px;
+	margin-top: -15px;
+	padding-top: 0px;
+	text-shadow: 0px 0px 5px #000;
+}
+.content-cat{
+	display: inline-block;
+	margin-right: 15px;
+	height: 150px;
+}
+.content-cat img,
+.content-cat div{
+	display: inline-block;
+	vertical-align: top;
+}
+.content-cat img{
+	width: 90px;
+	margin-right: 5px;
+}
+.content-cat div{
+	overflow: hidden;
+	width: 180px;
+}
+.content-cat span{
+	color: #c50;
+	font-weight: bold;
+}
