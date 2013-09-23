@@ -283,7 +283,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
+      'label' => 'inline',
       'formatter' => 'text_plain',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -311,7 +311,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
+      'label' => 'inline',
       'formatter' => 'taxonomy_term_reference_plain',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -339,7 +339,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
+      'label' => 'inline',
       'formatter' => 'number_integer',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -393,7 +393,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
+      'label' => 'above',
       'formatter' => 'text_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -427,7 +427,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
   $handler->handler = 'panel_context';
   $handler->weight = 1;
   $handler->conf = array(
-    'title' => 'VistaRevista',
+    'title' => 'VistaMediosElectronicos',
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
@@ -460,6 +460,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
           0 => 1,
           1 => 'main-row',
           2 => 2,
+          3 => 3,
         ),
         'parent' => 'canvas',
       ),
@@ -500,7 +501,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
       ),
       'datoslibro_' => array(
         'type' => 'region',
-        'title' => 'DatosRevista',
+        'title' => 'DatosLibro',
         'width' => '38.27359790523339',
         'width_type' => '%',
         'parent' => '1',
@@ -531,6 +532,23 @@ function vista_de_los_nodos_default_page_manager_handlers() {
         'parent' => '2',
         'class' => '',
       ),
+      3 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'replyform',
+        ),
+        'parent' => 'main',
+        'class' => '',
+      ),
+      'replyform' => array(
+        'type' => 'region',
+        'title' => 'ReplyForm',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '3',
+        'class' => '',
+      ),
     ),
   );
   $display->panel_settings = array(
@@ -541,10 +559,11 @@ function vista_de_los_nodos_default_page_manager_handlers() {
       'datoslibro_' => NULL,
       'sinopsis' => NULL,
       'comentarios' => NULL,
+      'replyform' => NULL,
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Libros relacionados';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -571,7 +590,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
         0 => 'argument_entity_id:node_1.field--autor',
       ),
       'override_title' => 1,
-      'override_title_text' => 'Revistas relacionadas',
+      'override_title_text' => 'Medios electronicos relacionados',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -594,8 +613,8 @@ function vista_de_los_nodos_default_page_manager_handlers() {
       'mode' => '0',
       'comments_per_page' => '10',
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Comentarios ',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -668,18 +687,18 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $pane->pid = 'new-14';
     $pane->panel = 'datoslibro_';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field__autor';
+    $pane->subtype = 'node:field_autor_melec';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'text_plain',
+      'label' => 'inline',
+      'formatter' => 'text_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(),
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
     );
     $pane->cache = array();
@@ -700,7 +719,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
+      'label' => 'inline',
       'formatter' => 'taxonomy_term_reference_plain',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -728,7 +747,7 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
+      'label' => 'inline',
       'formatter' => 'number_integer',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -753,13 +772,36 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $display->panels['datoslibro_'][3] = 'new-16';
     $pane = new stdClass();
     $pane->pid = 'new-17';
+    $pane->panel = 'replyform';
+    $pane->type = 'node_comment_form';
+    $pane->subtype = 'node_comment_form';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'anon_links' => 1,
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => 'Agrega un comentario',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-17'] = $pane;
+    $display->panels['replyform'][0] = 'new-17';
+    $pane = new stdClass();
+    $pane->pid = 'new-18';
     $pane->panel = 'sinopsis';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_sinopsis';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
+      'label' => 'above',
       'formatter' => 'text_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -777,9 +819,9 @@ function vista_de_los_nodos_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-17'] = $pane;
-    $display->panels['sinopsis'][0] = 'new-17';
-  $display->hide_title = PANELS_TITLE_FIXED;
+    $display->content['new-18'] = $pane;
+    $display->panels['sinopsis'][0] = 'new-18';
+  $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = 'new-12';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context_2'] = $handler;

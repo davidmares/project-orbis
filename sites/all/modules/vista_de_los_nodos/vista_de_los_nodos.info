@@ -1,7 +1,7 @@
 name = Vista de los nodos
 core = 7.x
 package = Features
-version = 7.x-1.0
+version = 7.x-1.2
 project = vista_de_los_nodos
 dependencies[] = ctools
 dependencies[] = page_manager
